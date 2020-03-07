@@ -1,0 +1,37 @@
+;; def -> define something like a global variable in the namespace
+;; defn ->  is used to create a function
+(defn vl-desc
+  [vl-brut]
+  (* vl-brt (- 1 0.10)))
+
+;; thats bad, dont define a global ref in a function
+(defn vl-desc
+  [vl-brut]
+  (def dsct-value 0.10)
+  (* vl-brt (- 1 dsct-value)))
+
+;; thats bad too, let is restricted to a local scope
+(defn vl-desc
+  [vl-brut]
+  (let [dsct-value 0.10])
+  (* vl-brt (- 1 dsct-value)))
+
+
+;; thats ok
+(defn vl-desc
+  [vl-brut]
+  (let [dsct-value 0.10]
+    (println "calculating discount" dsct-value)	
+    (* vl-brt (- 1 dsct-value))))
+
+
+;; thats ok
+;; tip to check class from value => (class 90N) or (class 90.0)
+(defn vl-desc
+  [vl-brut]
+  (let [dsct-value (/ 10 100)]
+    (println "calculating discount" dsct-value)	
+    (* vl-brt (- 1 dsct-value))))
+
+
+
